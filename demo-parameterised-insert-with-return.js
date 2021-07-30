@@ -1,12 +1,12 @@
 const { Client } = require("pg");
 
 async function doDemo() {
-  const client = new Client({ database: 'demos' });
+  const client = new Client({ database: 'musicbase' });
   await client.connect();
 
   const text =
-    "INSERT INTO words(word, category_id) VALUES($1, $2) RETURNING *";
-  const values = ["glasgow", 1];
+    "INSERT INTO artists(name, fav_song, id) VALUES($1, $2, $3) RETURNING *";
+  const values = ['Jelly B Birthmark Beaute', 'El Roi', 8];
 
   const res = await client.query(text, values);
 
